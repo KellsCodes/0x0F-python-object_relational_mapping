@@ -3,6 +3,7 @@
 
 import MySQLdb
 import sys
+from db_conn import connect_db
 
 '''
     Command line arguments for for mysql username,
@@ -11,9 +12,7 @@ import sys
 _args = sys.argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", user=_args[1],
-                         passwd=_args[2], db=_args[3],
-                         charset='utf8', port=3306)
+    db = connect_db(_args[1:])
     cur = db.cursor()
     cur.execute("SELECT * FROM states ORDER BY id ASC")
     query_rows = cur.fetchall()
