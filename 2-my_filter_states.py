@@ -7,7 +7,7 @@ from db_conn import connect_db
 _args = sys.argv
 
 if __name__ == "__main__":
-    sql_query = """SELECT * FROM states WHERE name = %s"""
+    sql_query = """SELECT * FROM states WHERE name = %s ORDER BY id ASC"""
     user_input = _args[-1:]
     db = connect_db(_args[1:4])
     cur = db.cursor()
